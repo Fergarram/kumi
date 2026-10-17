@@ -92,7 +92,7 @@
 #     The {version} placeholder in filenames is replaced with the actual version.
 #
 # FILES
-#     om/electron.json
+#     kumi/electron.json
 #         Configuration file defining packages, versions, and platforms
 #
 #     bin/electron-packages/

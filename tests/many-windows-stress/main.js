@@ -1,7 +1,7 @@
 //
 // Many windows stress test
 //
-// Usage: om . [count]
+// Usage: kumi . [count]
 //
 
 const { app, BrowserWindow, screen } = require("electron");
@@ -60,7 +60,7 @@ app.on("window-all-closed", () => {
 //
 
 function parseCount(argv) {
-	// The app path is consumed by om, so pick the last plain number argument
+	// The app path is consumed by kumi, so pick the last plain number argument
 	const numbers = argv.slice(1).filter((arg) => /^\d+$/.test(arg));
 	if (numbers.length === 0) return DEFAULT_COUNT;
 	const count = parseInt(numbers[numbers.length - 1], 10);

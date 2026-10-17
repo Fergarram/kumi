@@ -15,8 +15,8 @@
 #     and downloads only the matching Electron build.
 #
 #     After extraction and renaming, the script customizes the installation:
-#     - Renames electron executable to specified name (default: om)
-#     - Copies om-repack script to the application directory
+#     - Renames electron executable to specified name (default: kumi)
+#     - Copies kumi-repack script to the application directory
 #     - Runs pack.js to create custom default_app.asar
 #     - Replaces the default_app.asar in the resources directory
 
@@ -30,7 +30,7 @@
 #         bin relative to the script location.
 
 #     -n NAME
-#         Specify app name. Default is "om". This renames the
+#         Specify app name. Default is "kumi". This renames the
 #         electron executable.
 
 #     -h
@@ -38,11 +38,11 @@
 
 # EXAMPLES
 #     Basic usage with default version and name:
-#         $ cd om
+#         $ cd kumi
 #         $ ./build_linux.sh
 
 #     This downloads Electron (version from electron.conf) for your
-#     architecture, extracts it, and creates om application in ./bin/
+#     architecture, extracts it, and creates kumi application in ./bin/
 
 #     Use specific version:
 #         $ ./build_linux.sh -v 23.0.0
@@ -52,7 +52,7 @@
 #     Custom app name:
 #         $ ./build_linux.sh -n myapp
 
-#     Creates myapp executable instead of om.
+#     Creates myapp executable instead of kumi.
 
 #     Custom output directory:
 #         $ ./build_linux.sh -o ./dist
@@ -75,22 +75,22 @@
 
 #     5. Copies all Electron files to output directory
 
-#     6. Renames the executable from electron to specified name (default: om)
+#     6. Renames the executable from electron to specified name (default: kumi)
 
-#     7. Copies om-repack script and makes it executable
+#     7. Copies kumi-repack script and makes it executable
 
 #     8. Runs pack.js using the renamed executable to create custom default_app.asar
 
 #     9. Replaces default_app.asar in the resources directory
 
 # FILES
-#     om/download_electron.sh
+#     kumi/download_electron.sh
 #         Required download script
 
-#     om/electron.conf
+#     kumi/electron.conf
 #         Configuration file with versions and package definitions
 
-#     build/linux/om-repack.sh
+#     build/linux/kumi-repack.sh
 #         Repack script to copy to application directory
 
 #     build/pack.js
@@ -102,7 +102,7 @@
 #     bin/electron-packages/electron/{version}/
 #         Location of downloaded and extracted files
 
-#     bin/om/
+#     bin/kumi/
 #         Final output location (default)
 
 # REQUIREMENTS
@@ -123,7 +123,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 DOWNLOAD_SCRIPT="${SCRIPT_DIR}/download_electron.sh"
 CONFIG_FILE="${SCRIPT_DIR}/electron.conf"
 OUTPUT_DIR="${SCRIPT_DIR}/bin"
-APP_NAME="om"
+APP_NAME="kumi"
 
 function usage() {
     cat << EOF
@@ -134,11 +134,11 @@ Download and extract Electron binaries for your Linux architecture
 OPTIONS:
     -v VERSION      Electron version (default: from config)
     -o OUTPUT_DIR   Output directory for final application (default: bin)
-    -n NAME         App name (default: om)
+    -n NAME         App name (default: kumi)
     -h              Show this help message
 
 EXAMPLES:
-    $(basename "$0")                    # Use default version and name (om)
+    $(basename "$0")                    # Use default version and name (kumi)
     $(basename "$0") -v 23.0.0          # Use specific version
     $(basename "$0") -n myapp           # Create myapp executable
     $(basename "$0") -o ./dist          # Custom output directory
@@ -298,19 +298,19 @@ echo "========================================="
 echo "Customizing application"
 echo "========================================="
 
-# Copy om-repack script
-repack_source="${SCRIPT_DIR}/build/linux/om-repack.sh"
-repack_dest="${FINAL_OUTPUT_DIR}/om-repack"
+# Copy kumi-repack script
+repack_source="${SCRIPT_DIR}/build/linux/kumi-repack.sh"
+repack_dest="${FINAL_OUTPUT_DIR}/kumi-repack"
 
 if [[ -f "$repack_source" ]]; then
-    echo "Copying om-repack script"
+    echo "Copying kumi-repack script"
     echo "  from: $repack_source"
     echo "  to: $repack_dest"
     cp "$repack_source" "$repack_dest"
-    echo "Making om-repack executable"
+    echo "Making kumi-repack executable"
     chmod +x "$repack_dest"
 else
-    echo "Warning: om-repack script not found at $repack_source"
+    echo "Warning: kumi-repack script not found at $repack_source"
 fi
 
 echo ""

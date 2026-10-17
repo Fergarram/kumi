@@ -10,11 +10,11 @@ cd "$SCRIPT_DIR"
 PACK_SCRIPT="../../../../build/pack.js"
 ASAR_FILE="../../../../build/default_app.asar"
 RESOURCES_DIR="../Resources"
-OM_EXECUTABLE="./Om"
+KUMI_EXECUTABLE="./Kumi"
 
-# Check if Om executable exists
-if [ ! -f "$OM_EXECUTABLE" ]; then
-    echo "Error: Om executable not found at $OM_EXECUTABLE"
+# Check if Kumi executable exists
+if [ ! -f "$KUMI_EXECUTABLE" ]; then
+    echo "Error: Kumi executable not found at $KUMI_EXECUTABLE"
     exit 1
 fi
 
@@ -24,9 +24,9 @@ if [ ! -f "$PACK_SCRIPT" ]; then
     exit 1
 fi
 
-# Run the pack.js script using Om
+# Run the pack.js script using Kumi
 echo "Running pack.js to create default_app.asar..."
-"$OM_EXECUTABLE" "$PACK_SCRIPT"
+"$KUMI_EXECUTABLE" "$PACK_SCRIPT"
 
 # Check if the asar file was created
 if [ ! -f "$ASAR_FILE" ]; then

@@ -174,11 +174,11 @@ out
 # Finder (MacOS) folder config
 .DS_Store
 
-# Om
-Om.app
-build/Om.app
-build/Om*.app
-om.lnk
+# Kumi
+Kumi.app
+build/Kumi.app
+build/Kumi*.app
+kumi.lnk
 .virtfs_metadata
 .zig-cache
 *.qcow2

@@ -19,7 +19,7 @@ const argv = process.argv.slice(1);
 
 const option = {
 	file: null,
-	no_help: Boolean(process.env.OM_NO_HELP),
+	no_help: Boolean(process.env.KUMI_NO_HELP),
 	version: false,
 	webdriver: false,
 	interactive: false,
@@ -133,9 +133,9 @@ if (option.unpack_asar) {
 } else {
 	if (!option.no_help) {
 		const welcome_message = `
-Usage: om [options] [path]
+Usage: kumi [options] [path]
 
-A path to an Om app may be specified. It must be one of the following:
+A path to a Kumi app may be specified. It must be one of the following:
   - Entry JavaScript file
   - Folder containing a package.json file
   - Folder containing an index.js file
@@ -241,7 +241,7 @@ function loadApplicationPackage(package_path) {
 			resolved_app_path = app_path || path.dirname(file_path);
 			app.setAppPath(resolved_app_path);
 		} catch (e) {
-			showErrorMessage(`Unable to find Om app at ${package_path}\n\n${e.message}`);
+			showErrorMessage(`Unable to find Kumi app at ${package_path}\n\n${e.message}`);
 			return;
 		}
 

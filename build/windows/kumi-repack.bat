@@ -2,9 +2,9 @@
 setlocal enabledelayedexpansion
 
 set "SCRIPT_DIR=%~dp0"
-set "OM_EXE=%SCRIPT_DIR%om.exe"
+set "KUMI_EXE=%SCRIPT_DIR%kumi.exe"
 
-REM Build directory is the same as script directory (where om.exe lives)
+REM Build directory is the same as script directory (where kumi.exe lives)
 set "BUILD_DIR=%SCRIPT_DIR%"
 
 REM Default to build\default_app if no argument provided
@@ -14,7 +14,7 @@ if "%~1"=="" (
     set "SOURCE_DIR=%~1"
 )
 
-echo Om Repack Utility
+echo Kumi Repack Utility
 echo Script location: %SCRIPT_DIR%
 echo Build directory: %BUILD_DIR%
 echo Source directory: !SOURCE_DIR!
@@ -38,9 +38,9 @@ if not exist "!FULL_SOURCE_PATH!" (
     exit /b 1
 )
 
-REM Run om to create the asar
+REM Run kumi to create the asar
 echo Creating asar package...
-"!OM_EXE!" --pack-asar "!FULL_SOURCE_PATH!"
+"!KUMI_EXE!" --pack-asar "!FULL_SOURCE_PATH!"
 if !errorlevel! neq 0 (
     echo Failed to create asar package
     exit /b 1

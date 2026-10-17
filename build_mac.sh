@@ -16,7 +16,7 @@
 #
 #     After extraction and renaming, the script customizes the app bundle:
 #     - Copies custom Info.plist from build/mac/
-#     - Copies om-repack script to Contents/MacOS/
+#     - Copies kumi-repack script to Contents/MacOS/
 #     - Replaces default icon with custom icon from build/icons/
 #     - Runs pack.js to create custom default_app.asar
 #     - Replaces the default_app.asar in the app bundle
@@ -31,7 +31,7 @@
 #         bin relative to the script location.
 
 #     -n NAME
-#         Specify app name. Default is "Om". This renames both the
+#         Specify app name. Default is "Kumi". This renames both the
 #         .app bundle and the executable inside Contents/MacOS/.
 
 #     -h
@@ -39,11 +39,11 @@
 
 # EXAMPLES
 #     Basic usage with default version and name:
-#         $ cd om
+#         $ cd kumi
 #         $ ./build_mac.sh
 
 #     This downloads Electron (version from electron.conf) for your
-#     architecture, extracts it, and copies it as Om.app to ./bin/
+#     architecture, extracts it, and copies it as Kumi.app to ./bin/
 
 #     Use specific version:
 #         $ ./build_mac.sh -v 23.0.0
@@ -53,7 +53,7 @@
 #     Custom app name:
 #         $ ./build_mac.sh -n MyApp
 
-#     Creates MyApp.app instead of Om.app and renames the executable.
+#     Creates MyApp.app instead of Kumi.app and renames the executable.
 
 #     Custom output directory:
 #         $ ./build_mac.sh -o ./dist
@@ -72,31 +72,31 @@
 
 #     3. Extracts the zip file if not already extracted
 
-#     4. Copies Electron.app to output directory as Name.app (default: Om.app)
+#     4. Copies Electron.app to output directory as Name.app (default: Kumi.app)
 
-#     5. Renames the executable from Electron to Name (default: Om)
+#     5. Renames the executable from Electron to Name (default: Kumi)
 
 #     6. Copies custom Info.plist from build/mac/
 
-#     7. Copies om-repack script to Contents/MacOS/ and makes it executable
+#     7. Copies kumi-repack script to Contents/MacOS/ and makes it executable
 
 #     8. Replaces default icon with custom icon from build/icons/
 
-#     9. Runs pack.js using the Om executable to create custom default_app.asar
+#     9. Runs pack.js using the Kumi executable to create custom default_app.asar
 
 #     10. Replaces default_app.asar in the app bundle
 
 # FILES
-#     om/download_electron.sh
+#     kumi/download_electron.sh
 #         Required download script
 
-#     om/electron.conf
+#     kumi/electron.conf
 #         Configuration file with versions and package definitions
 
 #     build/mac/Info.plist
 #         Custom Info.plist to replace default
 
-#     build/mac/om-repack.sh
+#     build/mac/kumi-repack.sh
 #         Repack script to copy to app bundle
 
 #     build/icons/icon.icns
@@ -111,7 +111,7 @@
 #     bin/electron-packages/electron/{version}/
 #         Location of downloaded and extracted files
 
-#     bin/Om.app
+#     bin/Kumi.app
 #         Final output location (default)
 
 # REQUIREMENTS
@@ -132,7 +132,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 DOWNLOAD_SCRIPT="${SCRIPT_DIR}/download_electron.sh"
 CONFIG_FILE="${SCRIPT_DIR}/electron.conf"
 OUTPUT_DIR="${SCRIPT_DIR}/bin"
-APP_NAME="Om"
+APP_NAME="Kumi"
 
 function usage() {
     cat << EOF
@@ -143,11 +143,11 @@ Download and extract Electron binaries for your macOS architecture
 OPTIONS:
     -v VERSION      Electron version (default: from config)
     -o OUTPUT_DIR   Output directory for final app bundle (default: bin)
-    -n NAME         App name (default: Om)
+    -n NAME         App name (default: Kumi)
     -h              Show this help message
 
 EXAMPLES:
-    $(basename "$0")                    # Use default version and name (Om.app)
+    $(basename "$0")                    # Use default version and name (Kumi.app)
     $(basename "$0") -v 23.0.0          # Use specific version
     $(basename "$0") -n MyApp           # Create MyApp.app
     $(basename "$0") -o ./dist          # Custom output directory
@@ -318,19 +318,19 @@ else
     echo "Warning: Custom Info.plist not found at $info_plist_source"
 fi
 
-# Copy om-repack script
-repack_source="${SCRIPT_DIR}/build/mac/om-repack.sh"
-repack_dest="${final_app}/Contents/MacOS/om-repack"
+# Copy kumi-repack script
+repack_source="${SCRIPT_DIR}/build/mac/kumi-repack.sh"
+repack_dest="${final_app}/Contents/MacOS/kumi-repack"
 
 if [[ -f "$repack_source" ]]; then
-    echo "Copying om-repack script"
+    echo "Copying kumi-repack script"
     echo "  from: $repack_source"
     echo "  to: $repack_dest"
     cp "$repack_source" "$repack_dest"
-    echo "Making om-repack executable"
+    echo "Making kumi-repack executable"
     chmod +x "$repack_dest"
 else
-    echo "Warning: om-repack script not found at $repack_source"
+    echo "Warning: kumi-repack script not found at $repack_source"
 fi
 
 # Copy custom icon

@@ -1,4 +1,4 @@
-# Om
+# Kumi
 
 Electron but with a different name and other defaults.
 

@@ -9,13 +9,13 @@ BLOCK "StringFileInfo"
 {
 	BLOCK "040904b0"
 	{
-		VALUE "CompanyName", "Om"
-		VALUE "FileDescription", "Om"
+		VALUE "CompanyName", "Kumi"
+		VALUE "FileDescription", "Kumi"
 		VALUE "FileVersion", "1.0.0"
-		VALUE "InternalName", "om.exe"
+		VALUE "InternalName", "kumi.exe"
 		VALUE "LegalCopyright", "Copyright (C) 2025 Fernando Garcia. All rights reserved."
-		VALUE "OriginalFilename", "om.exe"
-		VALUE "ProductName", "Om"
+		VALUE "OriginalFilename", "kumi.exe"
+		VALUE "ProductName", "Kumi"
 		VALUE "ProductVersion", "1.0.0"
 		VALUE "SquirrelAwareVersion", "1"
 	}
